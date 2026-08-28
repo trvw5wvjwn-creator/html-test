@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rog-Joma — status projekta</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{--paper:#fafbfc;--card:#fff;--ink:#1d2530;--muted:#5c6874;--line:#e3e7ec;
+--jan:#2f6db3;--mi:#2f8a5b;--rj:#e31837;
+--done:#2f8a5b;--done-bg:#e9f6ef;--prog:#b8860b;--prog-bg:#fdf6e3;--wait:#5c6874;--wait-bg:#eef1f4;--blok:#c22;--blok-bg:#fdeef1}
+@media (prefers-color-scheme: dark){:root{--paper:#14181d;--card:#1c2229;--ink:#e8ecf1;--muted:#9aa5b1;--line:#2c343d;
+--jan:#6ea8e8;--mi:#5cc08c;--rj:#ff5a71;
+--done:#5cc08c;--done-bg:#182b21;--prog:#e0b84d;--prog-bg:#2b2617;--wait:#9aa5b1;--wait-bg:#232a32;--blok:#ff7b8d;--blok-bg:#322025}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;font-size:15px;line-height:1.5}
+.wrap{max-width:860px;margin:0 auto;padding:34px 20px 70px}
+.kicker{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rj)}
+h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,4.5vw,36px);margin:6px 0 4px}
+.upd{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}
+.summary{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 30px}
+.stat{flex:1;min-width:120px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.stat b{font-family:'Archivo',sans-serif;font-size:24px;display:block}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin:34px 0 10px;border-bottom:3px solid var(--rj);padding-bottom:6px;display:inline-block}
+.t{display:flex;flex-direction:column;gap:7px}
+.row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.st{font-family:'Archivo',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.st.done{color:var(--done);background:var(--done-bg)}
+.st.prog{color:var(--prog);background:var(--prog-bg)}
+.st.wait{color:var(--wait);background:var(--wait-bg)}
+.st.blok{color:var(--blok);background:var(--blok-bg)}
+.row h3{font-size:14.5px;font-weight:600;margin:0}
+.row .note{font-size:12.5px;color:var(--muted);margin:2px 0 0}
+.who{font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.who.jan{color:var(--jan)} .who.mi{color:var(--mi)} .who.ivo{color:var(--rj)}
+.d{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);white-space:nowrap}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+a{color:var(--jan)}
+@media(max-width:560px){.row{grid-template-columns:1fr auto}.row .who,.row .d{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker">rog-joma.hr · modernizacija webshopa</div>
+<h1>Status projekta</h1>
+<div class="upd">Zadnje ažurirao: Claude Code · 28.08.2026. 23:45 · <a href="PLAN-RADOVA-rogjoma.html">→ puni plan radova</a></div>
+
+<div class="summary">
+  <div class="stat"><b>7</b><span>završeno</span></div>
+  <div class="stat"><b>1</b><span>u tijeku</span></div>
+  <div class="stat"><b>2</b><span>čeka Jana</span></div>
+  <div class="stat"><b>15</b><span>u redu čekanja</span></div>
+</div>
+
+<h2>Završeno</h2>
+<div class="t">
+  <div class="row"><span class="st done">gotovo</span><div><h3>Kompletan audit weba i backenda</h3><p class="note">Svih 65 admin modula + frontend arhitektura + bugovi s reprodukcijama (MASTER dokument)</p></div><span class="who mi">Claude</span><span class="d">27–28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Widget za /dijelovi/ — izrađen i testiran</h3><p class="note">v4 fragment spreman; čeka Janov fix templatea (J4) za objavu</p></div><span class="who mi">Codex+Claude</span><span class="d">27–28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Marlin red — mobilni swipe vraćen</h3><p class="note">Janov deploy slomio swipe svih redova; scoped zakrpa u banneru i=173, razmaci usklađeni (12px)</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Slider naslovnice očišćen</h3><p class="note">24 mrtva slajda obrisana, ostala 2 aktualna</p></div><span class="who ivo">Ivo</span><span class="d">28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Stari size moduli ispražnjeni</h3><p class="note">Kalkulator veličina (45) + slike veličina (18) — backup spremljen</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Git postava projekta</h3><p class="note">Privatni repo rogjoma-web (struktura, task kartice, pravila za agente, workflow)</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
+  <div class="row"><span class="st done">gotovo</span><div><h3>Plan radova + email za Hajtek</h3><p class="note">Podjela rada, agresivna procjena (3–4 tjedna uz 48h review) — PDF spreman</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
+</div>
+
+<h2>U tijeku</h2>
+<div class="t">
+  <div class="row"><span class="st prog">u tijeku</span><div><h3>Slanje paketa Janu</h3><p class="note">Email + PDF plana — čim ode, kreće sat</p></div><span class="who ivo">Ivo</span><span class="d">—</span></div>
+</div>
+
+<h2>Čeka Hajtek (Jan)</h2>
+<div class="t">
+  <div class="row"><span class="st wait">čeka</span><div><h3>J1–J4: utf8mb4 · grupni banneri · CSRF poruka · dijelovi template</h3><p class="note">8–12 h rada; J4 odblokira objavu dijelovi widgeta</p></div><span class="who jan">Jan</span><span class="d">—</span></div>
+  <div class="row"><span class="st wait">čeka</span><div><h3>ZIP koda + anonimizirani dump + upute za staging</h3><p class="note">Preduvjet za sve naše M zadatke</p></div><span class="who jan">Jan</span><span class="d">—</span></div>
+</div>
+
+<h2>U redu čekanja (kreće čim stigne ZIP)</h2>
+<div class="t">
+  <div class="row"><span class="st blok">blokirano</span><div><h3>M0 staging · M1–M3 template fixevi · M4–M5 AJAX filteri + paginacija</h3><p class="note">Claude — prvi paket patcheva unutar 2 dana od ZIP-a</p></div><span class="who mi">Claude</span><span class="d">—</span></div>
+  <div class="row"><span class="st blok">blokirano</span><div><h3>M6–M10: filter UX · CSS konsolidacija · aria · Schema.org · sticky CTA</h3><p class="note">Codex — paralelne grane</p></div><span class="who mi">Codex</span><span class="d">—</span></div>
+  <div class="row"><span class="st wait">čeka</span><div><h3>Faza 2: blueprint sekcija (F1) · novi search (F2) · checkout (F3) · PDP (F4)</h3><p class="note">Gemini piše specifikacije; F3 radi Jan</p></div><span class="who mi">Tim</span><span class="d">tjedan 3–4</span></div>
+</div>
+
+<footer>Ovu stranicu održava Claude Code nakon svake promjene stanja — ovo je zadnja istina projekta.
+Detalji zadataka: <a href="PLAN-RADOVA-rogjoma.html">plan radova</a>. Kontakt: Ivo Skorin, Rog-Joma d.o.o.</footer>
+</div>
+</body>
+</html>
