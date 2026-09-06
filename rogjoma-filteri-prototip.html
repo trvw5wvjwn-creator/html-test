@@ -163,7 +163,8 @@ const S=[
  ]}
 ];
 const ALTS={'Brend':['Schwalbe','Maxxis','Pirelli'],'Kotač':['26″','27.5″','29″'],'Dimenzija':['700 x 23C','700 x 28C','700 x 32C'],'Tip':['Trkaći','Gravel','Trekking','City','Dječji'],'Podtip':['Full suspension','Road'],'Materijal':['Carbon'],'Spol':['Ženski','Unisex'],'Serija':['105','Dura-Ace','GRX'],'Brzine':['10','11'],'Ventil':['Presta (FV) 42 mm','Dunlop (DV)'],'Širina':['28–32 mm','47–62 mm'],'Veličina':['M/L 55–61','L/XL'],'MIPS':['Ne'],'Prsti':['Kratki'],'Sezona':['Ljeto'],'Sustav':['SPD','Flat'],'Lumeni':['200','1000'],'ETRTO':['23-622','28-622']};
-S.forEach(sec=>sec.items.forEach(it=>{it.alt={}; it.fac.forEach(([k,v])=>{it.alt[k]=(ALTS[k]||[]).filter(x=>x!==v).slice(0,3);});}));
+const BR={'Bicikli i e-bicikli':['Cannondale','Fuji','Romet'],'Fitness':['Toorx','ProForm','Body Sculpture','Kettler'],'E-romobili':['MS Energy','Xiaomi'],'Dijelovi':['Shimano','Continental','Schwalbe','SRAM'],'Oprema':['Topeak','SKS','Thule','Bontrager'],'Odjeća i obuća':['Giro','Bontrager','Trek','Bell']};
+S.forEach(sec=>sec.items.forEach(it=>{it.alt={}; it.fac.forEach(([k,v])=>{const src=k==='Brend'?(BR[sec.sec]||[]):(ALTS[k]||[]); it.alt[k]=src.filter(x=>x!==v).slice(0,3);});}));
 const root=document.getElementById('list');
 S.forEach(sec=>{
   const h=document.createElement('h2'); h.innerHTML=sec.sec+'<small>'+sec.items.length+' artikla</small>'; root.appendChild(h);
