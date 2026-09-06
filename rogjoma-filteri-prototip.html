@@ -60,6 +60,33 @@ h2 small{font-family:Barlow,sans-serif;font-size:14px;font-weight:500;color:var(
 .legend i{font-style:normal;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
 .legend i.t{color:var(--ink)} .legend i.f{color:var(--accent)}
 @media (max-width:860px){.logic{grid-template-columns:1fr}.art{grid-template-columns:110px 1fr}.art .id{grid-column:2/3}.art .col{grid-column:1/3}h1{font-size:34px}.nav{display:none}}
+
+.online{grid-column:1/4;margin-top:6px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.online .ohead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.online .ohead span:last-child{letter-spacing:0;text-transform:none;font-weight:500;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.online .obody{display:grid;grid-template-columns:230px 1fr;gap:0}
+.online .oside{border-right:1px solid var(--line);padding:12px 14px;display:flex;flex-direction:column;gap:12px}
+.online .oside h5{margin:0 0 5px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.online .oside label{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:2px 0}
+.online .oside label.on{color:var(--ink);font-weight:600}
+.online .oside .bx{width:13px;height:13px;border:1.5px solid var(--chipline);border-radius:3px;display:inline-block;flex:none}
+.online .oside label.on .bx{background:var(--ink);border-color:var(--ink);position:relative}
+.online .oside label.on .bx:after{content:"";position:absolute;left:3.5px;top:1px;width:3px;height:6px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.online .omain{padding:12px 14px}
+.online .ocrumbs{font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.online .ocrumbs b{color:var(--ink);font-weight:600}
+.online .otitle{font-family:"Barlow Condensed",Barlow,sans-serif;font-weight:700;font-size:22px;color:var(--ink);margin:0 0 10px}
+.online .otitle small{font-family:Barlow,sans-serif;font-weight:500;font-size:12px;color:var(--muted);margin-left:8px}
+.online .ocard{width:236px;background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:5px}
+.online .ocard .oph{background:var(--bg);border-radius:8px;height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.online .ocard .oph img{max-width:90%;max-height:90%;object-fit:contain;mix-blend-mode:multiply}
+.online .ocard .ob{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.online .ocard .on{font-weight:600;color:var(--ink);font-size:13px;line-height:1.3;min-height:2.6em}
+.online .ocard .ot{display:flex;flex-wrap:wrap;gap:4px}
+.online .ocard .ot span{font-size:11px;border:1px solid var(--chipline);background:var(--chip);border-radius:5px;padding:1px 6px;color:var(--text);font-variant-numeric:tabular-nums}
+.online .ocard .ot span:first-child{font-weight:600;color:var(--ink)}
+.online .ocard .op{font-weight:700;color:var(--ink);font-size:16px;margin-top:2px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.online{grid-column:1/3}.online .obody{grid-template-columns:1fr}.online .oside{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:14px}}
 </style>
 </head>
 <body>
@@ -135,6 +162,8 @@ const S=[
    g:['OBUĆA','CIPELE','CESTA / ROAD / TRIATHLON','TREK','BONTRAGER','','','','','',''],web:['Odjeća i obuća','Obuća','Cestovne'],fac:[['Brend','Bontrager'],['Veličina','39'],['Sustav','SPD-SL']],note:''}
  ]}
 ];
+const ALTS={'Brend':['Schwalbe','Maxxis','Pirelli'],'Kotač':['26″','27.5″','29″'],'Dimenzija':['700 x 23C','700 x 28C','700 x 32C'],'Tip':['Trkaći','Gravel','Trekking','City','Dječji'],'Podtip':['Full suspension','Road'],'Materijal':['Carbon'],'Spol':['Ženski','Unisex'],'Serija':['105','Dura-Ace','GRX'],'Brzine':['10','11'],'Ventil':['Presta (FV) 42 mm','Dunlop (DV)'],'Širina':['28–32 mm','47–62 mm'],'Veličina':['M/L 55–61','L/XL'],'MIPS':['Ne'],'Prsti':['Kratki'],'Sezona':['Ljeto'],'Sustav':['SPD','Flat'],'Lumeni':['200','1000'],'ETRTO':['23-622','28-622']};
+S.forEach(sec=>sec.items.forEach(it=>{it.alt={}; it.fac.forEach(([k,v])=>{it.alt[k]=(ALTS[k]||[]).filter(x=>x!==v).slice(0,3);});}));
 const root=document.getElementById('list');
 S.forEach(sec=>{
   const h=document.createElement('h2'); h.innerHTML=sec.sec+'<small>'+sec.items.length+' artikla</small>'; root.appendChild(h);
@@ -149,7 +178,16 @@ S.forEach(sec=>{
     el.innerHTML=`<div class="ph"><img src="${it.img.startsWith('data:')?it.img:H+it.img}" alt="" loading="lazy"></div>
       <div class="id"><span class="name">${it.name}</span><span class="price">${it.price}</span><span class="sku">šifra ${it.sku}</span><a class="link" href="${H+it.url}" target="_blank" rel="noopener">otvori na webu</a></div>
       <div class="col"><h4>ERP — trenutno (Grupe 1–11)</h4><div class="erp">${erp}</div></div>
-      <div class="col web"><h4>Web — ubuduće (što Jan prikazuje)</h4><div class="crumbs">${crumbs}</div><div class="facets">${fac}</div>${it.note?`<p class="note">${it.note}</p>`:''}</div>`;
+      <div class="col web"><h4>Web — ubuduće (što Jan prikazuje)</h4><div class="crumbs">${crumbs}</div><div class="facets">${fac}</div>${it.note?`<p class="note">${it.note}</p>`:''}</div>
+      <div class="online"><div class="ohead"><span>Ovako izgleda online</span><span>${it.url.replace(/[^/]+\/$/,'')}</span></div>
+        <div class="obody">
+          <div class="oside">${it.fac.map(([k,v])=>`<div><h5>${k}</h5><label class="on"><span class="bx"></span>${v}</label>${(it.alt&&it.alt[k]||[]).map(o=>`<label><span class="bx"></span>${o}</label>`).join('')}</div>`).join('')}</div>
+          <div class="omain">
+            <div class="ocrumbs"><span>Početna</span>›${it.web.map((c,i)=>i<it.web.length-1?`<span>${c}</span>›`:`<b>${c}</b>`).join('')}</div>
+            <div class="otitle">${it.web[it.web.length-1]}<small>filtrirano: ${it.fac.map(f=>f[1]).join(' · ')}</small></div>
+            <div class="ocard"><div class="oph"><img src="${it.img.startsWith('data:')?it.img:H+it.img}" alt=""></div><div class="ob">${it.fac[0][1]}</div><div class="on">${it.name}</div><div class="ot">${it.fac.slice(1).map(f=>`<span>${f[1]}</span>`).join('')}</div><div class="op">${it.price}</div></div>
+          </div>
+        </div></div>`;
     root.appendChild(el);
   });
 });
