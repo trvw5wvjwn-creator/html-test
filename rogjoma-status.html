@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>Rog-Joma — status projekta</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#fafbfc;--card:#fff;--ink:#1d2530;--muted:#5c6874;--line:#e3e7ec;
 --jan:#2f6db3;--mi:#2f8a5b;--rj:#e31837;
@@ -13,82 +14,159 @@
 --jan:#6ea8e8;--mi:#5cc08c;--rj:#ff5a71;
 --done:#5cc08c;--done-bg:#182b21;--prog:#e0b84d;--prog-bg:#2b2617;--wait:#9aa5b1;--wait-bg:#232a32;--blok:#ff7b8d;--blok-bg:#322025}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;font-size:15px;line-height:1.5}
-.wrap{max-width:860px;margin:0 auto;padding:34px 20px 70px}
-.kicker{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rj)}
-h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,4.5vw,36px);margin:6px 0 4px}
-.upd{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}
-.summary{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 30px}
-.stat{flex:1;min-width:120px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.stat b{font-family:'Archivo',sans-serif;font-size:24px;display:block}
-.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
-h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin:34px 0 10px;border-bottom:3px solid var(--rj);padding-bottom:6px;display:inline-block}
-.t{display:flex;flex-direction:column;gap:7px}
-.row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
-.st{font-family:'Archivo',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,-apple-system,sans-serif;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 20px 80px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1{font-size:34px;line-height:1.1;margin:8px 0 6px;font-weight:800;letter-spacing:-.02em}
+.upd{color:var(--muted);font-size:14px;margin-bottom:24px}
+.upd a{color:inherit}
+h2{font-size:20px;margin:36px 0 4px;font-weight:800;letter-spacing:-.01em}
+h2 .sub{display:block;font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:2px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:20px 0 4px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:26px;font-weight:800;line-height:1}
+.stat span{font-size:12px;color:var(--muted)}
+.t{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+display:grid;grid-template-columns:96px 1fr auto auto;gap:12px;align-items:start}
+.row h3{margin:0;font-size:15.5px;font-weight:700;line-height:1.3}
+.note{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+.st{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;text-align:center;white-space:nowrap}
 .st.done{color:var(--done);background:var(--done-bg)}
 .st.prog{color:var(--prog);background:var(--prog-bg)}
 .st.wait{color:var(--wait);background:var(--wait-bg)}
 .st.blok{color:var(--blok);background:var(--blok-bg)}
-.row h3{font-size:14.5px;font-weight:600;margin:0}
-.row .note{font-size:12.5px;color:var(--muted);margin:2px 0 0}
-.who{font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
-.who.jan{color:var(--jan)} .who.mi{color:var(--mi)} .who.ivo{color:var(--rj)}
-.d{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);white-space:nowrap}
-footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-a{color:var(--jan)}
-@media(max-width:560px){.row{grid-template-columns:1fr auto}.row .who,.row .d{grid-column:auto}}
+.who{font-size:12px;font-weight:700;white-space:nowrap}
+.who.jan{color:var(--jan)}.who.mi{color:var(--mi)}.who.ivo{color:var(--rj)}
+.d{font-size:12px;color:var(--muted);white-space:nowrap}
+.rep{grid-column:2/-1;margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.rep button{font:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;cursor:pointer;
+border:1px solid var(--line);background:transparent;color:var(--muted)}
+.rep button:hover{border-color:currentColor}
+.rep button.g{color:var(--done)}.rep button.u{color:var(--prog)}.rep button.t{color:var(--jan)}
+.howto{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--jan);
+border-radius:12px;padding:16px 18px;margin:18px 0 0}
+.howto p{margin:0 0 8px;font-size:14px}
+.howto p:last-child{margin-bottom:0}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media(max-width:720px){
+ .row{grid-template-columns:1fr;gap:6px}
+ .st{justify-self:start}
+ .who,.d{font-size:11.5px}
+ .rep{grid-column:1;margin-top:8px}
+ h1{font-size:27px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="kicker">rog-joma.hr · modernizacija webshopa</div>
 <h1>Status projekta</h1>
-<div class="upd">Zadnje ažurirao: Claude Code · 31.08.2026. — Janovi popravci J1/J2/J4 verificirani, dijelovi widget objavljen · <a href="PLAN-RADOVA-rogjoma.html">→ puni plan radova</a></div>
+<div class="upd">Zadnje ažurirano: 09.09.2026. u 17:07 · <a href="PLAN-RADOVA-rogjoma.html">→ puni plan radova</a></div>
 
 <div class="summary">
-  <div class="stat"><b>10</b><span>završeno</span></div>
-  <div class="stat"><b>0</b><span>u tijeku</span></div>
-  <div class="stat"><b>2</b><span>čeka Jana</span></div>
-  <div class="stat"><b>15</b><span>u redu čekanja</span></div>
+  <div class="stat"><b>4</b><span>Jan završio</span></div>
+  <div class="stat"><b>2</b><span>Jan u radu</span></div>
+  <div class="stat"><b>14</b><span>čeka Jana</span></div>
+  <div class="stat"><b>6</b><span>kod nas, gotovo</span></div>
 </div>
 
-<h2>Završeno</h2>
-<div class="t">
-  <div class="row"><span class="st done">gotovo</span><div><h3>PILOT: PDP obogaćenje — SKS pumpa</h3><p class="note">Specifikacije tablica + Otkrij editorial kroz tabove (mehanizam radi za SVE artikle); atributni set DIJELOVI I OPREMA kreiran</p></div><span class="who mi">Claude</span><span class="d">29.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Baseline mjerenja "prije"</h3><p class="note">20 CSS + 36 JS po stranici; gume 1,2 MB/466 slika; pretraga TTFB 915 ms — u repou</p></div><span class="who mi">Claude</span><span class="d">29.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Kompletan audit weba i backenda</h3><p class="note">Svih 65 admin modula + frontend arhitektura + bugovi s reprodukcijama (MASTER dokument)</p></div><span class="who mi">Claude</span><span class="d">27–28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Widget za /dijelovi/ — izrađen i testiran</h3><p class="note">v4 fragment spreman; OBJAVLJEN 31.08. nakon Janovog fixa templatea (J4)</p></div><span class="who mi">Codex+Claude</span><span class="d">27–31.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Marlin red — mobilni swipe vraćen</h3><p class="note">Janov deploy slomio swipe svih redova; scoped zakrpa u banneru i=173, razmaci usklađeni (12px)</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Slider naslovnice očišćen</h3><p class="note">24 mrtva slajda obrisana, ostala 2 aktualna</p></div><span class="who ivo">Ivo</span><span class="d">28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Stari size moduli ispražnjeni</h3><p class="note">Kalkulator veličina (45) + slike veličina (18) — backup spremljen</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Git postava projekta</h3><p class="note">Privatni repo rogjoma-web (struktura, task kartice, pravila za agente, workflow)</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Plan radova + email za Hajtek</h3><p class="note">Podjela rada, agresivna procjena (3–4 tjedna uz 48h review) — PDF spreman</p></div><span class="who mi">Claude</span><span class="d">28.08.</span></div>
+<div class="howto">
+  <p><b>Jane, ovdje možeš javiti status u dva klika.</b> Uz svaku stavku su tri gumba —
+  <b>Gotovo</b>, <b>U radu</b>, <b>Trebam info</b>. Klik otvori tvoj mail već ispunjen
+  (šifra stavke + status), ti samo dodaš rečenicu ako želiš i pošalješ.</p>
+  <p>Ako ti je lakše, slobodno odgovori i obično u mail threadu — bitno nam je samo da znamo
+  što je gotovo da ne testiramo naslijepo i da ti ne šaljemo isto dvaput.</p>
+  <p><button id="all" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--jan)">Javi status za više stavki odjednom</button></p>
 </div>
 
-<h2>U tijeku</h2>
-<div class="t">
-  <div class="row"><span class="st done">gotovo</span><div><h3>Jan odgovorio: J1, J2, J4 odrađeni ✔</h3><p class="note">utf8mb4 (emoji 1:1), grupni banneri (update čuva html_field + display_type radio), /hr/dijelovi/ novi template — sve verificirano na živom sustavu 31.08.</p></div><span class="who jan">Jan</span><span class="d">31.08.</span></div>
-  <div class="row"><span class="st prog">u tijeku</span><div><h3>J3: poruka za istekli CSRF token</h3><p class="note">Jan: „još radim na tome" — ostaje i ZIP koda + potvrda 48h reviewa</p></div><span class="who jan">Jan</span><span class="d">od 28.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Dijelovi naslovnica: brand baneri + widget objavljeni 🎉</h3><p class="note">Codexov dizajn — 4 photo kartice (Continental Pogačar, Selle Royal Respiro, Pedale, Shimano) + „Pronađi dijelove" 6 kategorija; desktop + mobilni swipe</p></div><span class="who mi">Claude+Codex</span><span class="d">31.08.</span></div>
-  <div class="row"><span class="st done">gotovo</span><div><h3>Paket poslan Janu ✔</h3><p class="note">Email + plan + PDF — čekamo termin, ZIP i potvrdu 48h reviewa</p></div><span class="who ivo">Ivo</span><span class="d">28.08.</span></div>
+<h2>Čeka Jana <span class="sub">redom po prioritetu koji smo dogovorili</span></h2>
+<div class="t" id="jan"></div>
+
+<h2>Jan u radu <span class="sub">javio 07.09. da izmjene radi sam</span></h2>
+<div class="t" id="radu"></div>
+
+<h2>Jan završio <span class="sub">provjerili smo na živom webu</span></h2>
+<div class="t" id="gotovo"></div>
+
+<h2>Kod nas <span class="sub">što smo mi napravili i predali</span></h2>
+<div class="t" id="mi"></div>
+
+<div class="foot">
+  Stranica je pregled stanja, ne ugovor. Detalji svake stavke su u mailovima i u dokumentu
+  „Dogovor o fazama i prihvatu" od 07.09.2026.
+</div>
 </div>
 
-<h2>Čeka Hajtek (Jan)</h2>
-<div class="t">
-  <div class="row"><span class="st wait">čeka</span><div><h3>J1–J4: utf8mb4 · grupni banneri · CSRF poruka · dijelovi template</h3><p class="note">8–12 h rada; J4 odblokira objavu dijelovi widgeta</p></div><span class="who jan">Jan</span><span class="d">—</span></div>
-  <div class="row"><span class="st wait">čeka</span><div><h3>ZIP koda + anonimizirani dump + upute za staging</h3><p class="note">Preduvjet za sve naše M zadatke</p></div><span class="who jan">Jan</span><span class="d">—</span></div>
-</div>
+<script>
+var JAN=[
+ ["N3","Korijen proizvoda: grupiranje varijanti + atributni filteri","Blokator broj 1. Varijante istog modela su zasebni artikli, nema zajedničkog korijena ni atributnih filtera.","blok","31.08."],
+ ["N13","Filteri dijelova nestabilni — grupe se grade iz slobodnih naziva","Dokazano u kodu (class.HSimporter.php, createGroups): svaki import radi TRUNCATE i gradi stablo iz naziva → ID-evi čvorova se mijenjaju, duplikati istog imena, stari nazivi ostaju. Ni jedan URL, filter ni SEO ne smiju se vezati na ID čvora dok nema fiksne tablice kategorija.","blok","06.09."],
+ ["N13b","Filter brenda na odjeći vraća sve","Izmjereno 09.09. u 16:50: /hr/odjeca-i-obuca/?brand=continental prikazuje 48 artikala od Bell, Giro, Cratoni, Trek i Bontrager. Nepoznata vrijednost filtera mora dati 0 rezultata s porukom, nikad sve.","blok","09.09."],
+ ["N16","Spremanje forme artikla na VIRT nosiocu obori „ukupna kol“ na 0","Artikl nestane s weba dok ga ERP prijenos ne vrati. Molba: spremanje ne smije dirati „ukupna kol“, ili neka je preračunava iz povezanih veličina.","wait","08.09."],
+ ["N12","VIRT nosioci veličina za 159 Trek grupa","517 artikala nema nosioca pa svaka veličina stoji kao zaseban proizvod. Pitanje: kako import generira -VIRT nosioce (142 postojeća su tako nastala)?","wait","06.09."],
+ ["N8","Podaci artikla se keširaju ~10 minuta","Nakon „Postavi default“ na drugu sliku frontend još ~10 min pokazuje staru. Molba: invalidirati keš po artikl_id nakon promjene, ili gumb „Osvježi keš artikla“ u adminu.","wait","02.09."],
+ ["N17","Makni „Obavijest o mogućim promjenama specifikacija“ s PDP-a bicikala","Blok je hard-kodiran u predlošku (h2.specificationsNotificationTitle), nema ga u adminu. Mi smo ga zasad sakrili CSS-om na 351 mjestu — kad ga makneš iz predloška, javi da maknemo i to.","wait","09.09."],
+ ["N1","PDP: donji slideri trepere kod svakog učitavanja","Slick se inicijalizira bez pre-init CSS-a. Provjereno da nije od naših editorijala.","wait","31.08."],
+ ["N7","Odjeća listing ispisuje goli „?&gt;“ kad grupa ima banner","Danas nismo uspjeli reproducirati na /odjeca-i-obuca/ ni /dijelovi/ — javi je li popravljeno pa da zatvorimo stavku.","wait","01.09."],
+ ["N2","Zračnica 38016 stoji i u grupi „Ljepila i zakrpe“","Vjerojatno kriva veza artikl→grupa u bazi.","wait","31.08."],
+ ["ROB","robots.txt + zaštita podatkovnih datoteka","Tri molbe: zamijeniti robots.txt našim prijedlogom, Referer provjera za rjv_data.js i rjv_bikes.js (inače 403), i meta noai/noimageai u head bloga i artikala.","wait","06.09."],
+ ["BON","Uvoz ne čita blok BONIN iz shimano.xlsx","Dodali smo blok (kolona A 41+šifra,količina · B 5 dana · C BONIN, 6.719 redaka). Nakon 1,5 h artikli 41… i dalje imaju 0. Pitanje: čita li uvoz sve blokove ili samo konfigurirane dobavljače, i kako točno mora pisati u koloni C?","wait","08.09."],
+ ["IMP","Automatsko gašenje artikala bez slike","createGroups pri svakom importu gasi svaki artikl bez slike osim bicikala (razlog „Nema slike“, korisnik „Sistem“, izvan admin forme). Molba: izvještaj umjesto tihog gašenja. Primjer: Shimano ponuda 674, 58 od 436 neaktivno, 53 bez slike.","wait","07.09."],
+ ["DOG","Potvrda opsega, faze i rokovi","Iz dogovora od 07.09. čekamo: potvrdu da je i class.HSimporter.php u opsegu, prijedlog faza s rokovima i troškom, format CSV-a za uvoznik, i mišljenje o zalihi 0 / inkrementalnom uvozu.","wait","07.09."]
+];
+var RADU=[
+ ["M2","Tihi fail sa zastarjelim CSRF tokenom","Javio 31.08. da radi na tome — POST sa starim hscms_form vrati 200 bez poruke, izmjena se tiho izgubi.","prog","31.08."],
+ ["WIP","Filter po Grupi 6 na dijelovima","U kodu od 07.09. vidi se započeta, nedovršena linija u dijelovi.php (if ($product_filters['group6']). Javi kad bude spremno da testiramo.","prog","07.09."]
+];
+var GOTOVO=[
+ ["J1","Migracija baze na utf8mb4","Verificirano na živom — emoji i posebni znakovi prolaze 1:1.","done","31.08."],
+ ["M1","Grupni banneri čuvaju html_field","Update bez ponovnog odabira slike više ne briše sadržaj; display_type radio radi.","done","31.08."],
+ ["M3","/hr/dijelovi/ template ispisuje html_field","Widget dijelova objavljen isti dan nakon popravka.","done","31.08."],
+ ["N13a","Objašnjenje 3 „nevidljiva“ artikla","Jan je bio u pravu: dva nisu u ERP XML-u jer im je zaliha 0, treći je ručno deaktiviran u adminu. Naš primjer je bio kriv, strukturni nalaz N13 ostaje.","done","07.09."]
+];
+var MI=[
+ ["ERP0","ERP faza 0 — radni popis","Prebrojano 09.09. na kopiji baze: 368 kombinacija Grupa 1/2/3, od toga 118 s greškom u nazivu (8.893 artikla). Kotač u nazivu grupe: 40 kombinacija, kod kotača i obruča još žive.","done","09.09."],
+ ["G67","Grupa 6 i 7 — prijedlog za 2.793 artikla","Parser iz ETRTO; slaganje s postojećim fajlom 711/717 (99,2 %). Našli i grešku u starom fajlu: kratio dimenziju u 171 retku.","done","09.09."],
+ ["KAT","Paket web_kategorija + erp_map","162 čvora sa stabilnim ID-evima i slugovima, 302 ERP kombinacije mapirane (26.074 artikla), CSV i SQL, plus rj_test_import.php za provjeru nakon svakog importa.","done","07.09."],
+ ["TEST","Lokalna testna okolina","PHP 8.4 + MariaDB iz dumpa, cijeli sajt na 127.0.0.1 — greške reproduciramo lokalno prije nego ti javimo.","done","07.09."],
+ ["PDP","Sadržaj artikala","Editorijali, specifikacije, kalkulatori veličina i cross-sell na tisućama artikala; zadnje 09.09. cijela Riese &amp; Müller linija.","done","09.09."],
+ ["PATCH","M4–M14 patchevi","Pauzirani otkad si javio da sam radiš na tim datotekama — javi kad da nastavimo da se ne gazimo.","wait","07.09."]
+];
+function esc(s){return String(s).replace(/&(?!amp;|gt;|lt;)/g,'&amp;')}
+function render(id,list,report){
+ var el=document.getElementById(id),h='';
+ list.forEach(function(r,n){
+  h+='<div class="row"><span class="st '+r[3]+'">'+({done:'gotovo',prog:'u radu',wait:'čeka',blok:'blokator'}[r[3]])+'</span>'
+   +'<div><h3>'+r[0]+' — '+esc(r[1])+'</h3><p class="note">'+r[2]+'</p></div>'
+   +'<span class="who '+(id==='mi'?'mi':'jan')+'">'+(id==='mi'?'mi':'Jan')+'</span><span class="d">'+r[4]+'</span>'
+   +(report?'<div class="rep" data-k="'+r[0]+'" data-n="'+esc(r[1])+'">'
+     +'<button class="g">Gotovo</button><button class="u">U radu</button><button class="t">Trebam info</button></div>':'')
+   +'</div>';
+ });
+ el.innerHTML=h;
+}
+render('jan',JAN,true);render('radu',RADU,true);render('gotovo',GOTOVO,false);render('mi',MI,false);
 
-<h2>U redu čekanja (kreće čim stigne ZIP)</h2>
-<div class="t">
-  <div class="row"><span class="st blok">blokirano</span><div><h3>M0 staging · M1–M3 template fixevi · M4–M5 AJAX filteri + paginacija</h3><p class="note">Claude — prvi paket patcheva unutar 2 dana od ZIP-a</p></div><span class="who mi">Claude</span><span class="d">—</span></div>
-  <div class="row"><span class="st blok">blokirano</span><div><h3>M6–M10: filter UX · CSS konsolidacija · aria · Schema.org · sticky CTA</h3><p class="note">Codex — paralelne grane</p></div><span class="who mi">Codex</span><span class="d">—</span></div>
-  <div class="row"><span class="st wait">čeka</span><div><h3>Faza 2: blueprint sekcija (F1) · novi search (F2) · PDP (F4) — checkout odgođen za zimu</h3><p class="note">Gemini piše specifikacije; checkout (walleti) svjesno odgođen za zimu 2026./27.</p></div><span class="who mi">Tim</span><span class="d">tjedan 3–4</span></div>
-</div>
-
-<footer>Ovu stranicu održava Claude Code nakon svake promjene stanja — ovo je zadnja istina projekta.
-Detalji zadataka: <a href="PLAN-RADOVA-rogjoma.html">plan radova</a>. Kontakt: Ivo Skorin, Rog-Joma d.o.o.</footer>
-</div>
+var TO=['ivo.skorin','rog-joma.hr'].join('@');
+function mail(subj,body){
+ location.href='mailto:'+TO+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('.rep button');if(!b)return;
+ var w=b.parentElement,k=w.getAttribute('data-k'),n=w.getAttribute('data-n');
+ var st=b.classList.contains('g')?'GOTOVO':b.classList.contains('u')?'U RADU':'TREBAM INFO';
+ mail('RJ status: '+k+' — '+st,
+  'Stavka: '+k+' — '+n+'\nStatus: '+st+'\n\nNapomena:\n\n\n(poslano s Rog-Joma status stranice)');
+});
+document.getElementById('all').addEventListener('click',function(){
+ var lines=[];
+ document.querySelectorAll('#jan .rep, #radu .rep').forEach(function(w){
+  lines.push(w.getAttribute('data-k')+' — '+w.getAttribute('data-n')+'\n   status: ');
+ });
+ mail('RJ status — više stavki',
+  'Upiši status iza svake stavke (gotovo / u radu / trebam info):\n\n'+lines.join('\n')+'\n\n(poslano s Rog-Joma status stranice)');
+});
+</script>
 </body>
 </html>
