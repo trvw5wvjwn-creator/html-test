@@ -222,8 +222,7 @@ function cijenaDodir(){var a=D.getElementById('slider-1'),b=D.getElementById('sl
    Cijela sprava ostaje u okviru (mjerilo racunato iz njezinih rubova). Fotografija bez jednolike podloge (bvar>6) se ne dira.
    Kartica koristi veci izvoz -o (920x700) umjesto -lt (365x250 s bijelim rubovima), da povecanje ne bude mutno; bez -o vraca se izvorna. */
 var OKV={};
-function jeCipela(img){var c=img.closest&&img.closest('[data-productid]');try{return !!c&&/cipel/i.test(tipIme(c.getAttribute('data-productid')))}catch(e){return false}}
-function okvir(img,cb){var PR=jeCipela(img)?40:14,s=(img.currentSrc||img.src)+'|'+PR;if(OKV.hasOwnProperty(s))return cb(OKV[s]);
+function okvir(img,cb){var s=img.currentSrc||img.src;if(OKV.hasOwnProperty(s))return cb(OKV[s]);
  if(!img.complete||!img.naturalWidth){if(!img.__rjok){img.__rjok=1;img.addEventListener('load',function(){img.__rjok=0;velicina(img)})}return}
  var b=0;try{var W=230,H=Math.max(1,Math.round(W*img.naturalHeight/img.naturalWidth)),c=D.createElement('canvas');c.width=W;c.height=H;
   var x=c.getContext('2d',{willReadFrequently:true});x.drawImage(img,0,0,W,H);var d=x.getImageData(0,0,W,H).data,rub=[[],[],[]],i,j,p,q;
@@ -232,7 +231,7 @@ function okvir(img,cb){var PR=jeCipela(img)?40:14,s=(img.currentSrc||img.src)+'|
   var bg=rub.map(function(a){a=a.slice().sort(function(m,n){return m-n});return a[a.length>>1]}),bv=0,n=rub[0].length;
   for(i=0;i<n;i++)bv+=Math.max(Math.abs(rub[0][i]-bg[0]),Math.abs(rub[1][i]-bg[1]),Math.abs(rub[2][i]-bg[2]));bv/=n;
   if(bv<=6){var R=[],C=[];for(j=0;j<H;j++)R.push(0);for(i=0;i<W;i++)C.push(0);
-   for(j=0;j<H;j++)for(i=0;i<W;i++){p=(j*W+i)*4;if(Math.max(Math.abs(d[p]-bg[0]),Math.abs(d[p+1]-bg[1]),Math.abs(d[p+2]-bg[2]))>PR){R[j]++;C[i]++}}
+   for(j=0;j<H;j++)for(i=0;i<W;i++){p=(j*W+i)*4;if(Math.max(Math.abs(d[p]-bg[0]),Math.abs(d[p+1]-bg[1]),Math.abs(d[p+2]-bg[2]))>14){R[j]++;C[i]++}}
    var y0=-1,y1=-1,x0=-1,x1=-1;for(j=0;j<H;j++)if(R[j]>=2){if(y0<0)y0=j;y1=j}for(i=0;i<W;i++)if(C[i]>=2){if(x0<0)x0=i;x1=i}
    if(y0>=0&&x0>=0)b=[x0/W,y0/H,(x1+1)/W,(y1+1)/H]}
  }catch(e){b=0}
@@ -243,7 +242,7 @@ function velicina(img){if(!img.isConnected)return;okvir(img,function(b){var pic=
  var fw=pic.clientWidth,fh=pic.clientHeight;if(!fw||!fh)return;var ar=img.naturalWidth/img.naturalHeight,af=fw/fh,mob=window.matchMedia&&matchMedia('(max-width:767px)').matches;
  var cw=ar<af?ar/af:1,ch=ar<af?1:af/ar,pw=(b[2]-b[0])*cw,ph=(b[3]-b[1])*ch,dx=((b[0]+b[2])/2-.5)*cw,dy=((b[1]+b[3])/2-.5)*ch;
  /* okomito: sprava ne smije pod tockice klizaca teme (dno okvira) ni pod oznaku popusta na mobitelu (vrh) */
- var Th=mob?.72:.84,pom=mob?.01:-.04,Tw=jeCipela(img)?.73:.9,s=Math.max(.9,Math.min(1.7,Math.min(Tw/pw,Th/ph)));
+ var Th=mob?.72:.84,pom=mob?.01:-.04,s=Math.max(.9,Math.min(1.7,Math.min(.9/pw,Th/ph)));
  img.style.setProperty('object-fit','contain','important');img.style.setProperty('transform-origin','50% 50%','important');
  img.style.setProperty('transform','translate('+(-s*dx*100).toFixed(2)+'%,'+((pom-s*dy)*100).toFixed(2)+'%) scale('+s.toFixed(3)+')','important')})}
 function slikaKartice(card){var img=card.querySelector('figure img');if(!img||img.__rjv)return;img.__rjv=1;
